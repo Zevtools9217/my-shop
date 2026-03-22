@@ -87,9 +87,9 @@ export default function CartPage() {
             <span className="text-gray-600">Итого:</span>
             <span className="text-2xl font-bold">{totalPrice.toLocaleString('ru-RU')} ₽</span>
           </div>
-          <button className="w-full bg-black text-white py-4 rounded-xl text-lg font-semibold hover:bg-gray-800 transition mb-3">
-            Оформить заказ
-          </button>
+          <a href="/checkout" className="w-full bg-black text-white py-4 rounded-xl text-lg font-semibold hover:bg-gray-800 transition mb-3 block text-center">
+  Оформить заказ
+</a>
           <button
             onClick={clearCart}
             className="w-full border border-gray-300 py-3 rounded-xl text-gray-600 hover:bg-gray-50 transition"
