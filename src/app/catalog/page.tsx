@@ -1,5 +1,6 @@
 import { supabase } from '@/lib/supabase'
-
+import Header from '@/components/Header'
+import AddToCartButton from '@/components/AddToCartButton'
 type Product = {
   id: string
   name: string
@@ -29,17 +30,7 @@ export default async function CatalogPage() {
   return (
     <main className="min-h-screen bg-gray-50">
 
-      {/* Шапка */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <a href="/" className="text-2xl font-bold text-gray-900">🛍️ MyShop</a>
-          <nav className="flex gap-6 text-gray-600">
-            <a href="/catalog" className="hover:text-black">Каталог</a>
-            <a href="#" className="hover:text-black">Корзина 🛒</a>
-            <a href="#" className="hover:text-black">Войти</a>
-          </nav>
-        </div>
-      </header>
+     <Header />
 
       <div className="max-w-6xl mx-auto px-4 py-8">
 
@@ -76,9 +67,12 @@ export default async function CatalogPage() {
                 <p className="font-bold text-lg">{product.price.toLocaleString('ru-RU')} ₽</p>
                 <p className="text-xs text-gray-400">{product.stock} шт.</p>
               </div>
-              <button className="mt-3 w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition text-sm">
-                В корзину
-              </button>
+              <AddToCartButton product={{
+  id: product.id,
+  name: product.name,
+  price: product.price,
+  image_url: product.image_url
+}} />
             </a>
           ))}
         </div>

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Analytics } from '@vercel/analytics/react';
 import { Geist, Geist_Mono } from "next/font/google";
+import { CartProvider } from '@/components/CartProvider'
 import "./globals.css";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +30,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children} <Analytics /></body>
+      <body className="min-h-full flex flex-col"><CartProvider>{children} </CartProvider> <Analytics /></body>
     </html>
   );
 }

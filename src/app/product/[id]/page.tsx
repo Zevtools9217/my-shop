@@ -1,5 +1,6 @@
 import { supabase } from '@/lib/supabase'
-
+import AddToCartButton from '@/components/AddToCartButton'
+import Header from '@/components/Header'
 type Product = {
   id: string
   name: string
@@ -27,7 +28,11 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
 
   if (!product) {
     return (
-      <main className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <main className="min-h-screen bg-gray-50">
+  <Header />
+
+  {/* Главный баннер */}
+  ...
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Товар не найден</h1>
           <a href="/catalog" className="text-blue-500 hover:underline">← Вернуться в каталог</a>
@@ -38,18 +43,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
 
   return (
     <main className="min-h-screen bg-gray-50">
-
-      {/* Шапка */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <a href="/" className="text-2xl font-bold text-gray-900">🛍️ MyShop</a>
-          <nav className="flex gap-6 text-gray-600">
-            <a href="/catalog" className="hover:text-black">Каталог</a>
-            <a href="#" className="hover:text-black">Корзина 🛒</a>
-            <a href="#" className="hover:text-black">Войти</a>
-          </nav>
-        </div>
-      </header>
+<Header />
 
       <div className="max-w-4xl mx-auto px-4 py-8">
 
@@ -79,9 +73,12 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             </div>
             <div>
               <p className="text-4xl font-bold mb-6">{product.price.toLocaleString('ru-RU')} ₽</p>
-              <button className="w-full bg-black text-white py-4 rounded-xl text-lg font-semibold hover:bg-gray-800 transition">
-                В корзину
-              </button>
+              <AddToCartButton product={{
+  id: product.id,
+  name: product.name,
+  price: product.price,
+  image_url: product.image_url
+}} />
             </div>
           </div>
 
