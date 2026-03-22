@@ -36,7 +36,7 @@ export default async function Home() {
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold text-gray-900">🛍️ MyShop</h1>
           <nav className="flex gap-6 text-gray-600">
-            <a href="#" className="hover:text-black">Каталог</a>
+            <a href="/catalog" className="hover:text-black">Каталог</a>
             <a href="#" className="hover:text-black">Корзина 🛒</a>
             <a href="#" className="hover:text-black">Войти</a>
           </nav>
@@ -47,9 +47,9 @@ export default async function Home() {
       <section className="bg-black text-white py-20 text-center">
         <h2 className="text-4xl font-bold mb-4">Добро пожаловать в MyShop</h2>
         <p className="text-gray-400 text-lg mb-8">Лучшие товары по лучшим ценам</p>
-        <button className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-200 transition">
-          Смотреть каталог
-        </button>
+        <a href="/catalog" className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-200 transition inline-block">
+  Смотреть каталог
+</a>
       </section>
 
       {/* Товары из базы данных */}
